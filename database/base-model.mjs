@@ -6,11 +6,14 @@ class BaseModel {
   static _init(fastify) {
     const { config } = fastify;
 
-    this.cache = config.cache;
     this.namespace = config.env;
-
     this.resource = this.collection.name;
-    this.redis = fastify.redis[this.namespace];
+
+    this.redis = fastify.redis
+      ? fastify.redis[this.namespace]
+      : null;
+
+    this.cache = config.cache && !!this.redis;
   }
 
   /** create */
