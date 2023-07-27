@@ -12,7 +12,4 @@ export const getPathInfo = (metaUrl) => {
   return { resource, version, modelName };
 };
 
-export default {
-  nanoidCustom,
-  getPathInfo,
-};
+export default {};
